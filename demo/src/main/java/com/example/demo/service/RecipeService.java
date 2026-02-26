@@ -13,13 +13,13 @@ import java.io.InputStream;
 import java.util.Map;
 
 @Component
-public class DataLoader implements CommandLineRunner {
+public class RecipeService implements CommandLineRunner {
 
     // Inject the repository so we can save to the database
     @Autowired
     private final RecipeRepository recipeRepository;
 
-    public DataLoader(RecipeRepository recipeRepository) {
+    public RecipeService(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
 
@@ -69,7 +69,7 @@ public class DataLoader implements CommandLineRunner {
                 // 5. Save to database!
                 recipeRepository.save(recipe);
             }
-            System.out.println("Recipes are saved to the database.");
+            System.out.println("Recipes are saved to the database successfully.");
         }
     }
 }
