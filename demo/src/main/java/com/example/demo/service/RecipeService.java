@@ -57,9 +57,6 @@ public class RecipeService implements CommandLineRunner {
                     recipe.setTotalTime(Integer.parseInt(totalTimeText));
                 }
 
-// Do the exact same for prep_time and cook_time!
-                
-                // (You would do the exact same simple if/else for prep_time and cook_time)
 
                 // 4. Save the Nutrients as a Map
                 Map<String, Object> nutrientsMap = mapper.convertValue(
@@ -68,7 +65,7 @@ public class RecipeService implements CommandLineRunner {
                 );
                 recipe.setNutrients(nutrientsMap);
 
-                // 5. Save to database!
+                // 5. Save to database
                 recipeRepository.save(recipe);
             }
             System.out.println("Recipes are saved to the database successfully.");
