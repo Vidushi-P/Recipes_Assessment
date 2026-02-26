@@ -41,21 +41,23 @@ public class RecipeService implements CommandLineRunner {
                 recipe.setTitle(node.get("title").asText());
                 recipe.setCuisine(node.get("cuisine").asText());
                 
-                // 2. Set Rating (Check for NaN!)
+                // 2. Set Rating (Check for NaN AND null)
                 String ratingText = node.get("rating").asText();
-                if (ratingText.equals("NaN") || ratingText.isEmpty()) {
+                if (ratingText.equals("NaN") || ratingText.equals("null") || ratingText.isEmpty()) {
                     recipe.setRating(null);
                 } else {
                     recipe.setRating(Double.parseDouble(ratingText));
                 }
 
-                // 3. Set Total Time (Check for NaN!)
+                // 3. Set Total Time (Check for NaN AND null)
                 String totalTimeText = node.get("total_time").asText();
-                if (totalTimeText.equals("NaN") || totalTimeText.isEmpty()) {
+                if (totalTimeText.equals("NaN") || totalTimeText.equals("null") || totalTimeText.isEmpty()) {
                     recipe.setTotalTime(null);
                 } else {
                     recipe.setTotalTime(Integer.parseInt(totalTimeText));
                 }
+
+// Do the exact same for prep_time and cook_time!
                 
                 // (You would do the exact same simple if/else for prep_time and cook_time)
 
